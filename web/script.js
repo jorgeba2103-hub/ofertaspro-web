@@ -89,9 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         products.forEach((p, index) => {
-            const card = document.createElement('div');
+            const card = document.createElement('a');
+            card.href = p.affiliate_link;
+            card.target = '_blank';
             card.className = 'product-card';
-            // Simple cascada de animación
+            card.style.textDecoration = 'none';
+            card.style.color = 'inherit';
+            
             card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
             card.style.opacity = '0';
             
@@ -108,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="product-info">
                     <div class="product-brand">${p.category || 'Destacado'}</div>
-                    <a href="${p.affiliate_link}" target="_blank" class="product-title" title="${p.title.replace(/"/g, '&quot;')}">${p.title}</a>
+                    <div class="product-title" title="${p.title.replace(/"/g, '&quot;')}">${p.title}</div>
                     
                     <div class="product-rating">
                         <span class="stars">${getStarsHTML(displayRating)}</span>
@@ -120,9 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="flexpay-text">Con Prime, lo tienes mañana.</div>
                     </div>
                     
-                    <a href="${p.affiliate_link}" target="_blank" class="add-to-cart-btn">
+                    <div class="add-to-cart-btn">
                         <i class="fab fa-amazon" style="font-size:16px;"></i> VER EN AMAZON
-                    </a>
+                    </div>
                 </div>
             `;
             productsGrid.appendChild(card);
@@ -221,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgUrl = p.images && p.images.length > 0 ? p.images[0] : 'https://via.placeholder.com/300';
             const displayStyle = index === 0 ? 'opacity: 1; z-index: 2;' : 'opacity: 0; z-index: 1;';
             return `
-                <div class="carousel-slide" style="${displayStyle}">
+                <a href="${p.affiliate_link}" target="_blank" class="carousel-slide" style="${displayStyle}; text-decoration: none;">
                     <div class="featured-tag">🔥 Top ${index + 1} Más Visto</div>
                     <div class="featured-img-wrap img-container" style="background: transparent; border: none; padding: 0;">
                         <img src="${imgUrl}" class="product-img" style="max-height: 220px; object-fit: contain;">
@@ -231,10 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p style="margin-bottom: 15px; color: var(--brand-accent); font-weight: bold; font-size:14px; text-transform:uppercase;">${p.category || 'Destacado'}</p>
                         <div class="featured-action">
                             <span class="fake-price" style="font-size: 28px;">${p.price.toFixed(2)}€</span>
-                            <a href="${p.affiliate_link}" target="_blank" class="arrow-circle"><i class="fas fa-shopping-cart" style="font-size: 16px;"></i></a>
+                            <span class="arrow-circle"><i class="fas fa-shopping-cart" style="font-size: 16px;"></i></span>
                         </div>
                     </div>
-                </div>
+                </a>
             `;
         }).join('');
         
