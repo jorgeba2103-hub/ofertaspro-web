@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfertasPro — Premium Finds</title>
+    <meta name="description" content="Descubre productos exclusivos y ofertas increíbles.">
+    
+    <!-- Modern Fonts: Plus Jakarta Sans for a sleek, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="glass-nav">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-sparkles"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">Ofertas</span><span class="logo-accent">Pro</span>
+                </div>
+            </a>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Buscar productos, marcas, ofertas...">
+                <button id="search-btn" class="hidden-btn">Buscar</button>
+            </div>
+
+            <div class="nav-actions">
+                <button class="icon-btn"><i class="fas fa-bell"></i></button>
+                <button class="icon-btn cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="prime-btn"><i class="fab fa-amazon"></i> Try Prime</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-text-panel">
+                <div class="badge-pill pulse">
+                    <span class="badge-dot"></span> EN VIVO AHORA
+                </div>
+                <h1 class="hero-title">
+                    Descubre lo <span class="text-gradient">Extraordinario</span><br>cada día.
+                </h1>
+                <p class="hero-subtitle">
+                    Las ofertas más exclusivas de Amazon, seleccionadas a mano. Diseño premium, tecnología de punta y hogar inteligente a precios irrepetibles.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#explore" class="btn-glow">Explorar Ofertas <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">24h</span>
+                        <span class="stat-label">Actualización</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value"><i class="fas fa-shipping-fast"></i></span>
+                        <span class="stat-label">Envío Prime</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">Top</span>
+                        <span class="stat-label">Calidad</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual-panel">
+                <!-- Abstract 3D/Glass visual representation -->
+                <div class="glass-card hero-featured-card">
+                    <div class="featured-tag">🔥 HOT DEAL</div>
+                    <div class="featured-img-wrap">
+                        <i class="fas fa-box-open floating-icon"></i>
+                    </div>
+                    <div class="featured-info">
+                        <h3>Oferta Destacada del Día</h3>
+                        <p>Los mejores precios en tecnología y hogar.</p>
+                        <div class="featured-action">
+                            <span class="fake-price">Hasta -60%</span>
+                            <div class="arrow-circle"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-layout container" id="explore">
+        
+        <!-- SIDEBAR FILTERS -->
+        <aside class="sidebar-filters glass-panel">
+            <div class="filter-header">
+                <h3><i class="fas fa-sliders-h"></i> Filtros</h3>
+                <button class="reset-filters">Limpiar</button>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Categorías</h4>
+                <ul class="styled-list" id="category-list">
+                    <li><a href="#" data-cat="all" class="cat-link active">Todas</a></li>
+                </ul>
+                <select id="category-filter" class="mobile-only-select" style="display:none;">
+                    <option value="all">Todas</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h4>Precio</h4>
+                <select id="price-filter" class="glass-select">
+                    <option value="all">Cualquier precio</option>
+                    <option value="0-25">Menos de 25€</option>
+                    <option value="25-50">25€ – 50€</option>
+                    <option value="50-100">50€ – 100€</option>
+                    <option value="100+">Más de 100€</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h4>Ordenar por</h4>
+                <select id="sort-filter" class="glass-select">
+                    <option value="recommended">Recomendados</option>
+                    <option value="price-low">Menor Precio</option>
+                    <option value="price-high">Mayor Precio</option>
+                    <option value="rating">Mejor Valorados</option>
+                </select>
+            </div>
+
+            <div class="sidebar-promo">
+                <div class="promo-content">
+                    <i class="fab fa-amazon promo-icon"></i>
+                    <h5>Amazon Prime</h5>
+                    <p>Envíos rápidos y gratis en miles de productos.</p>
+                    <a href="https://www.amazon.es/prime" target="_blank" class="promo-link">Probar Gratis</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PRODUCTS GRID -->
+        <section class="products-section">
+            <div class="section-header">
+                <h2>Catálogo Exclusivo</h2>
+                <div class="layout-toggles">
+                    <button class="active"><i class="fas fa-th-large"></i></button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Skeleton Loading -->
+                <div class="glass-card skeleton-card"></div>
+                <div class="glass-card skeleton-card"></div>
+                <div class="glass-card skeleton-card"></div>
+                <div class="glass-card skeleton-card"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="glass-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i class="fas fa-sparkles"></i></div>
+                    <span class="logo-main">Ofertas</span><span class="logo-accent">Pro</span>
+                </a>
+                <p>La experiencia de compra redefinida. Selección exclusiva de Amazon con envío Prime.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4>Explorar</h4>
+                    <a href="#">Ofertas Flash</a>
+                    <a href="#">Lo más vendido</a>
+                    <a href="#">Novedades</a>
+                </div>
+                <div class="link-col">
+                    <h4>Soporte</h4>
+                    <a href="#">FAQ</a>
+                    <a href="#">Envíos</a>
+                    <a href="#">Devoluciones</a>
+                </div>
+                <div class="link-col">
+                    <h4>Legal</h4>
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                    <a href="#">Afiliados Amazon</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 OfertasPro. Como Afiliado de Amazon, percibimos ingresos por las compras elegibles.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
