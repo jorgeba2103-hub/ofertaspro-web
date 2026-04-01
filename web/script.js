@@ -211,11 +211,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// Funciones Globales para UI
+function showToast(message, icon = 'fas fa-info-circle') {
+    const toast = document.createElement('div');
+    toast.className = 'custom-toast';
+    toast.innerHTML = `<i class="${icon}"></i> <span>${message}</span>`;
+    document.body.appendChild(toast);
+    
+    // Animar entrada
+    setTimeout(() => toast.classList.add('show'), 50);
+    
+    // Animar salida y destruir
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+    }, 3500);
+}
+
+// Configurar Interfaz Top (Campana, Carrito)
+document.addEventListener('DOMContentLoaded', () => {
+    const bellBtn = document.getElementById('bell-btn');
+    const cartBtn = document.getElementById('cart-btn');
+
+    if (bellBtn) {
+        bellBtn.addEventListener('click', () => {
+            bellBtn.innerHTML = '<i class="fas fa-bell" style="color:var(--brand-accent);"></i>';
+            showToast('¡Notificaciones activadas! Te avisaremos de los chollos flash.', 'fas fa-check-circle');
+        });
+    }
+
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            showToast('Tu carrito de Amazon te espera. ¡Selecciona una oferta primero!', 'fas fa-shopping-cart');
+        });
+    }
+});
+
 // Agregando animaciones CSS de cascada on the fly
-const styleSheet = document.createElement("style");
-styleSheet.innerText = `
+const styleArray = document.createElement('style');
+styleArray.innerText = `
 @keyframes fadeUp {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }`;
-document.head.appendChild(styleSheet);
+document.head.appendChild(styleArray);
