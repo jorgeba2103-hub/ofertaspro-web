@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (productsGrid) {
                 renderCategories(data);
                 renderProducts(data);
-                if (typeof renderHeroCarousel === 'function') renderHeroCarousel(data);
                 
                 // Eventos
                 if(categoryFilter) categoryFilter.addEventListener('change', (e) => { currentCategory = e.target.value; applyFilters(); });
@@ -209,54 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderProducts(filtered);
-    }
-
-    function renderHeroCarousel(products) {
-        const carouselContainer = document.getElementById('hero-carousel');
-        if (!carouselContainer) return;
-        
-        let top3 = [...products].sort((a,b) => b.reviews - a.reviews).slice(0, 3);
-        if (top3.length === 0) {
-            carouselContainer.innerHTML = '';
-            return;
-        }
-        
-        let slidesHTML = top3.map((p, index) => {
-            const imgUrl = p.images && p.images.length > 0 ? p.images[0] : 'https://via.placeholder.com/300';
-            const displayStyle = index === 0 ? 'opacity: 1; z-index: 2;' : 'opacity: 0; z-index: 1;';
-            return `
-                <a href="${p.affiliate_link}" target="_blank" class="carousel-slide" style="${displayStyle}; text-decoration: none;">
-                    <div class="featured-tag">🔥 Top ${index + 1} Más Visto</div>
-                    <div class="featured-img-wrap img-container" style="background: transparent; border: none; padding: 0;">
-                        <img src="${imgUrl}" class="product-img" style="max-height: 220px; object-fit: contain;">
-                    </div>
-                    <div class="featured-info" style="margin-top: 20px;">
-                        <h3 style="font-size: 20px; margin-bottom: 5px; line-height:1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color:white;">${p.title}</h3>
-                        <p style="margin-bottom: 15px; color: var(--brand-accent); font-weight: bold; font-size:14px; text-transform:uppercase;">${p.category || 'Destacado'}</p>
-                        <div class="featured-action">
-                            <span class="fake-price" style="font-size: 28px;">${p.price.toFixed(2)}€</span>
-                            <span class="arrow-circle"><i class="fas fa-shopping-cart" style="font-size: 16px;"></i></span>
-                        </div>
-                    </div>
-                </a>
-            `;
-        }).join('');
-        
-        carouselContainer.innerHTML = slidesHTML;
-        
-        let currentIndex = 0;
-        const slides = carouselContainer.querySelectorAll('.carousel-slide');
-        if (slides.length <= 1) return;
-        
-        setInterval(() => {
-            slides[currentIndex].style.opacity = '0';
-            slides[currentIndex].style.zIndex = '1';
-            
-            currentIndex = (currentIndex + 1) % slides.length;
-            
-            slides[currentIndex].style.opacity = '1';
-            slides[currentIndex].style.zIndex = '2';
-        }, 4000);
     }
 });
 
